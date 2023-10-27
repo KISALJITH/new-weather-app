@@ -1,40 +1,30 @@
 .card-outer{
-    margin: 20px;
-    padding: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    
+    margin-bottom: 110px;
+    margin-top: 12px;
 }
 .card-inner{
-    width: 579px;
+    width: 1000px;
+    background-color: transparent; 
+}
+
+.card-header{
+    background-color: #2e95df;
 }
 
 .btn-backward{
     background-color: none;
     border: none;
-}
-.card-upper{
-    width: 1201px;
-    height: 391px;
-    border-radius: 8px 8px  0px 0px;
-    background-color: #378de7;
-    -webkit-border-radius: 8px 8px  0px 0px;
-    -moz-border-radius: 8px 8px  0px 0px;
-    -ms-border-radius: 8px 8px  0px 0px;
-    -o-border-radius: 8px 8px  0px 0px;
+    border-radius: 100px;
 }
 
-.card-lower{
-    width: 1201px;
-    height: 206px;
-    border-radius:  0px 0px 8px 8px;
+.card-lower{   
     background-color: #383b47;
-    -webkit-border-radius:  0px 0px 8px 8px;
-    -moz-border-radius:  0px 0px 8px 8px;
-    -ms-border-radius:  0px 0px 8px 8px;
-    -o-border-radius:  0px 0px 8px 8px;
+    width: 100%;
+}
+
+.detailrow{
+    width: 70%;
 }
 
 .card-segment{
@@ -42,11 +32,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+}
+
+.below-detail-row{
+    width: 80%;
+    margin-top: 10px;
+}
+
+.top-vl{
+    border-left: 3px solid #cdc9c9;
+    height: 140px;
+}
+
+.bottom-vl{
+    border-left: 3px solid #4d4c4c;
+    height: 70px;
+    margin-top: 20px;
 }
 
 .card-text-city{
     margin-top: 50px;
-    margin-bottom: 1px;
+    margin-bottom: 8px;
     font-size: 29px;
     color: #ffffff;
     font-weight: 700;
@@ -81,76 +88,92 @@
     font-weight: 400;
     font-family: "Open Sans";
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .card-text-skyType{
-    font-size: 19px;
+    font-size: 15px;
     line-height: 36px;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 520;
     font-family: "Open Sans";
     
 }
 
 .card-text-temp{
-    font-size: 64px;
+    font-size: 55px;
     line-height: 69px;
     text-transform: uppercase;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 700;
     font-family: "Open Sans";
     text-align: center;
 
 }
 
 .card-text-minTemp{
-    font-size: 19px;
+    font-size: 15px;
     line-height: 30px;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 520;
     font-family: "Open Sans";
     text-align: center;
+    margin-bottom: 0;
 }
 
 .card-text-maxTemp{
-    font-size: 19px;
+    font-size: 15px;
     line-height: 30px;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 520;
     font-family: "Open Sans";
     text-align: center;
 
 }
 
 .card-text-pressure, .card-text-humidity, .card-text-visibility{
-    font-size: 16px;
+    font-size: 14px;
     line-height: 29px;
     color: #ffffff;
-    font-weight: 700;
+    font-weight: 600;
     font-family: "Open Sans";
+    margin-bottom: 0;
 
 }
 
 .card-text-sunrise, .card-text-sunset{
-    font-size: 16px;
+    font-size: 14px;
     line-height: 30px;
     color: #ffffff;
-    font-weight: 700;
+    font-weight: 600;
     font-family: "Open Sans";
     text-align: right;
+    margin-bottom: 0;
 }
 
 .card-text-wind{
-    font-size: 16px;
+    font-size: 14px;
     line-height: 34px;
     color: #ffffff;
     font-weight: 600;
     font-family: "Open Sans";
     text-align: center;
+    margin-bottom: 0;
+}
+
+.sunrise-detail-col{
+    margin-top: 25px;
+}
+
+.input-details{
+    font-weight: 200;
 }
 
 .card-text-imgNavigation{
 
     align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    margin-top: 22px;
 }
 

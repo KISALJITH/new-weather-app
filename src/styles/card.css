@@ -1,91 +1,112 @@
-.card-outer{
+.card-outer-cd{
     margin: 20px;
     padding: 10px;
-    position: absolute;
-    
-    
+    border: transparent;
+    display: flex;
 }
-.card-inner{
-    width: 579px;
-    
-    
+.card-inner-cd{
+    /* width: 579px; */
+    border: transparent;
+    border: none;
+    background-color: transparent;
+    margin: 10px;
+    /* box-shadow: 0px 0px 2px 2px #ffffff; */
 }
-.card-upper{
+.card-upper-cd{
     height: 217px;
     border-radius: 8px 8px  0px 0px;
     background-color: #378de7;
     width: 579px;
-    -webkit-border-radius: 8px 8px  0px 0px;
-    -moz-border-radius: 8px 8px  0px 0px;
-    -ms-border-radius: 8px 8px  0px 0px;
-    -o-border-radius: 8px 8px  0px 0px;
+    border: transparent;
+
+    background-image: url('./../images/Rectangle.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(29, 29, 30);
 }
 
-.card-lower{
+.card-lower-cd{
     width: 579px;
-    height: 151px;
     border-radius:  0px 0px 8px 8px;
     background-color: #383b47;
-    -webkit-border-radius:  0px 0px 8px 8px;
-    -moz-border-radius:  0px 0px 8px 8px;
-    -ms-border-radius:  0px 0px 8px 8px;
-    -o-border-radius:  0px 0px 8px 8px;
 }
 
-.card-segment{
+.upper-row{
+    margin-bottom: 20px;
+}
+
+.card-segment-cd{
     background: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: transparent;
 }
 
-.card-text-city{
-    font-size: 29px;
+.status-details {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cloud-img{
+    width: 30px;
+    height: 30px;
+}
+
+.container-cd{
+    display: flex;
+}
+
+.card-text-city-cd{
+    font-size: 22px;
     color: #ffffff;
-    font-weight: 700;
+    font-weight: 600;
     font-family: "Open Sans";
     text-align: center;
 }
 
-.card-text-timeDate{
-    font-size: 16px;
+.card-text-timeDate-cd{
+    font-size: 12px;
     color: #ffffff;
     font-weight: 400;
     font-family: "Open Sans";
     text-align: center;
 }
 
-.card-text-skyType{
-    font-size: 19px;
+.card-text-skyType-cd{
+    font-size: 15px;
     line-height: 36px;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 400;
     font-family: "Open Sans";
+    margin-left: 10px;
     
 }
 
-.card-text-temp{
-    font-size: 64px;
+.card-text-temp-cd{
+    font-size: 44px;
     line-height: 69px;
     text-transform: uppercase;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 500;
     font-family: "Open Sans";
     text-align: center;
 
 }
 
-.card-text-minTemp{
-    font-size: 16px;
+.card-text-minTemp-cd{
+    font-size: 12px;
     line-height: 24px;
     color: #ffffff;
     font-weight: 600;
     font-family: "Open Sans";
     text-align: center;
+    margin-bottom: 0;
 }
 
-.card-text-maxTemp{
-    font-size: 16px;
+.card-text-maxTemp-cd{
+    font-size: 12px;
     line-height: 24px;
     color: #ffffff;
     font-weight: 600;
@@ -94,26 +115,28 @@
 
 }
 
-.card-text-pressure, .card-text-humidity, .card-text-visibility{
-    font-size: 16px;
+.card-text-pressure-cd, .card-text-humidity-cd, .card-text-visibility-cd{
+    font-size: 12px;
     line-height: 29px;
     color: #ffffff;
     font-weight: 700;
     font-family: "Open Sans";
+    margin-bottom: 0;
 
 }
 
-.card-text-sunrise, .card-text-sunset{
-    font-size: 16px;
+.card-text-sunrise-cd, .card-text-sunset-cd{
+    font-size: 12px;
     line-height: 30px;
     color: #ffffff;
     font-weight: 700;
     font-family: "Open Sans";
     text-align: right;
+    margin-bottom: 0;
 }
 
-.card-text-wind{
-    font-size: 16px;
+.card-text-wind-cd{
+    font-size: 12px;
     line-height: 34px;
     color: #ffffff;
     font-weight: 600;
@@ -121,7 +144,7 @@
     text-align: center;
 }
 
-.card-text-imgNavigation{
+.card-text-imgNavigation-cd{
 
     align-items: center;
 }

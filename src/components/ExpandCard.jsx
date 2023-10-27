@@ -3,6 +3,7 @@ import backgroundImg from "./../images/Rectangle.png";
 import navigationImg from "./../images/navigation.png";
 import backArrow from "./../images/arrow.png";
 import "./../styles/expandCard.css";
+import cloud from "./../images/cloud.png";
 
 function ExpandCard() {
   return (
@@ -11,58 +12,59 @@ function ExpandCard() {
         <div className="card-header">
           <button type="button" className="btn-backward">
             <img src={backArrow} />
+            {/* <i class="bi bi-arrow-left"></i> */}
           </button>
-        </div>
 
-        <div class="card text-bg-dark card-upper">
-          <div class="container text-center">
-            <div class="row">
-              <div class="col-md-4 offset-md-4">
-                <p className="card-text-city">Colombo, Lk</p>
-                <p className="card-text-timeDate">9:19am, Feb 8</p>
-              </div>
+          <div class="row">
+            <div class="col-md-6 offset-lg-3">
+              <h2 className="card-text-city">Colombo, Lk</h2>
+              <h1 className="card-text-timeDate">9:19am, Feb 8</h1>
             </div>
-            <div class="row upper-second-row">
-              <div class="col-md-3 offset-md-3 upper-left">
-                <p className="card-text-skyType">Cloudy</p>
-              </div>
-              <div class="col-md-3 offset-md-6 upper-right">
-                <p className="card-text-temp">27° c</p>
-                <p className="card-text-minTemp">Temp min: 25°c</p>
-                <p className="card-text-maxTemp">Temp max: 27°c</p>
-              </div>
+          </div>
+
+          <div class="row justify-content-center detailrow offset-md-2">
+            <div class="col-3">
+              <img src={cloud} />
+              {/* <i class="bi bi-cloud"></i> */}
+              <p className="card-text-skyType">Few Clouds</p>
+            </div>
+            <div class="col-1 top-vl"></div>
+            <div class="col-3">
+              <p className="card-text-temp">27° c</p>
+              <p className="card-text-minTemp">Temp min: 25°c</p>
+              <p className="card-text-maxTemp">Temp max: 27°c</p>
             </div>
           </div>
         </div>
+
         <div className="card-lower">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-4">
-                <div className="card card-segment">
-                  <div className="card-body">
-                    <p className="card-text-pressure">Pressure: 1018hPa</p>
-                    <p className="card-text-humidity">Humidity: 78%</p>
-                    <p className="card-text-visibility">Visibility: 8.0km</p>
-                  </div>
+          <div className="row below-detail-row col-md-3 offset-md-1">
+            <div className="col-md-4">
+              <div className="card card-segment">
+                <div className="card-body">
+                  <p className="card-text-pressure">Pressure: <span className="input-details">1018hPa</span></p>
+                  <p className="card-text-humidity">Humidity: <span className="input-details">78%</span></p>
+                  <p className="card-text-visibility">Visibility: <span className="input-details">8.0km</span></p>
                 </div>
               </div>
-              <div className="col-md-4 border-left border-right">
-                <div className="card card-segment">
-                  <div className="card-body">
-                    <img
-                      className="card-text-imgNavigation"
-                      src={navigationImg}
-                    />
-                    <p className="card-text-wind">4.0m/s 120 Degree</p>
+            </div>
+            <div class="col-md-1 bottom-vl"></div>
+            <div className="col-md-3 border-left border-right">
+              <div className="card card-segment">
+                <div className="card-body">
+                  <div className="card-text-imgNavigation offset-md-5">
+                    <img src={navigationImg} />
                   </div>
+                  <p className="card-text-wind">4.0m/s 120 Degree</p>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="card card-segment">
-                  <div className="card-body">
-                    <p className="card-text-sunrise">Sunrise: 07:00am</p>
-                    <p className="card-text-sunset">Sunset: 07:00pm</p>
-                  </div>
+            </div>
+            <div class="col-md-1 bottom-vl"></div>
+            <div className="col-md-3">
+              <div className="card card-segment sunrise-detail-col">
+                <div className="card-body">
+                  <p className="card-text-sunrise">Sunrise: <span className="input-details">07:00am</span></p>
+                  <p className="card-text-sunset">Sunset: <span className="input-details">07:00pm</span></p>
                 </div>
               </div>
             </div>

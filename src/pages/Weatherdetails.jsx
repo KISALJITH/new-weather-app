@@ -7,8 +7,8 @@ import ExpandCard from '../components/ExpandCard'
 function Weatherdetails() {
   return (
     <div className='background'>
-       <Header />
-       <ExpandCard />
+      <Header />
+       {/* <ExpandCard /> */}
       <Footer />
       
     </div>
@@ -16,4 +16,4 @@ function Weatherdetails() {
   )
 }
 
-export default Weatherdetails
+export default Weatherdetails;

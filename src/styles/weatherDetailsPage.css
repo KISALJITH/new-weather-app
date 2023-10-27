@@ -8,10 +8,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* position: absolute; */
     background-image: url('./../images/Rectangle.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-color: black;
+    background-color: rgb(29, 29, 30);
     
 }
