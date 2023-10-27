@@ -1,0 +1,21 @@
+
+.header-outer{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header-outer > img{
+    height: 30px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.main-title{
+    font-size: 29px;
+    line-height: 36px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Open Sans"; 
+}

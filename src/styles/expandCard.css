@@ -1,0 +1,156 @@
+.card-outer{
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.card-inner{
+    width: 579px;
+}
+
+.btn-backward{
+    background-color: none;
+    border: none;
+}
+.card-upper{
+    width: 1201px;
+    height: 391px;
+    border-radius: 8px 8px  0px 0px;
+    background-color: #378de7;
+    -webkit-border-radius: 8px 8px  0px 0px;
+    -moz-border-radius: 8px 8px  0px 0px;
+    -ms-border-radius: 8px 8px  0px 0px;
+    -o-border-radius: 8px 8px  0px 0px;
+}
+
+.card-lower{
+    width: 1201px;
+    height: 206px;
+    border-radius:  0px 0px 8px 8px;
+    background-color: #383b47;
+    -webkit-border-radius:  0px 0px 8px 8px;
+    -moz-border-radius:  0px 0px 8px 8px;
+    -ms-border-radius:  0px 0px 8px 8px;
+    -o-border-radius:  0px 0px 8px 8px;
+}
+
+.card-segment{
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-text-city{
+    margin-top: 50px;
+    margin-bottom: 1px;
+    font-size: 29px;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Open Sans";
+    text-align: center;
+}
+
+.upper-second-row{
+    display: flex;
+    
+}
+.upper-left{
+    height: 200px;
+    border: 1px red solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.upper-right{
+    height: 200px;
+    border: 1px red solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-text-timeDate{
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Open Sans";
+    text-align: center;
+}
+
+.card-text-skyType{
+    font-size: 19px;
+    line-height: 36px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Open Sans";
+    
+}
+
+.card-text-temp{
+    font-size: 64px;
+    line-height: 69px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Open Sans";
+    text-align: center;
+
+}
+
+.card-text-minTemp{
+    font-size: 19px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Open Sans";
+    text-align: center;
+}
+
+.card-text-maxTemp{
+    font-size: 19px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Open Sans";
+    text-align: center;
+
+}
+
+.card-text-pressure, .card-text-humidity, .card-text-visibility{
+    font-size: 16px;
+    line-height: 29px;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Open Sans";
+
+}
+
+.card-text-sunrise, .card-text-sunset{
+    font-size: 16px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Open Sans";
+    text-align: right;
+}
+
+.card-text-wind{
+    font-size: 16px;
+    line-height: 34px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Open Sans";
+    text-align: center;
+}
+
+.card-text-imgNavigation{
+
+    align-items: center;
+}
+
