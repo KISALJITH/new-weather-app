@@ -4,8 +4,12 @@ import navigationImg from "./../images/navigation.png";
 import backArrow from "./../images/arrow.png";
 import "./../styles/expandCard.css";
 import cloud from "./../images/cloud.png";
+import { useSearchParams } from "react-router-dom";
 
 function ExpandCard() {
+
+  const [searchParams, setSearchParam] = useSearchParams()
+
   return (
     <div className="card-outer">
       <div className="card card-inner col-lg-8">
@@ -17,7 +21,7 @@ function ExpandCard() {
 
           <div class="row">
             <div class="col-md-6 offset-lg-3">
-              <h2 className="card-text-city">Colombo, Lk</h2>
+              <h2 className="card-text-city">{searchParams.get('cityName')}, Lk</h2>
               <h1 className="card-text-timeDate">9:19am, Feb 8</h1>
             </div>
           </div>

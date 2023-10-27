@@ -8,7 +8,7 @@ function Weatherdetails() {
   return (
     <div className='background'>
       <Header />
-       {/* <ExpandCard /> */}
+       <ExpandCard />
       <Footer />
       
     </div>

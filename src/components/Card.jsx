@@ -5,11 +5,12 @@ import navigationImg from "./../images/navigation.png";
 import cloud from "./../images/cloud.png";
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({city})=> {
 
+
   const [weatherData, setWeatherData] = useState(null);
-  const [isLargeView, setIsLargeView] = useState(false);
 
   useEffect(() => {
     const cachedData = getCachedData(city.CityCode);
@@ -68,18 +69,23 @@ const Card = ({city})=> {
       }
     }
 
+
     return null;
   };
-
-  const toggleView = () => {
-    setIsLargeView(!isLargeView);
-  };
-
+const navigate = useNavigate();
+const toggleView = () => {
+    
+      // Navigate to the city-details route with query parameters
+      navigate({
+        pathname: "/description",
+        search: `?cityName=${city.CityName}&temp=${city.Temp}&status=${city.Status}`,
+      });
+    }
   return (
     <div>
 
       {weatherData && (
-    <div className="card-outer-cd">
+    <div className="card-outer-cd" onClick={toggleView}>
     <div className="card card-inner-cd">
       <div className="card-rows col-md-6">
         <div class="card text-bg-dark-cd card-upper-cd">
