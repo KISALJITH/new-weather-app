@@ -177,3 +177,58 @@
     margin-top: 22px;
 }
 
+@media only screen and (max-width: 1200px) {
+    .card-outer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-text-temp{
+        font-size: 50px;
+        font-weight: 600;
+    
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .detailrow{
+        width: 82%;
+    }
+
+    .card-text-temp{
+        font-size: 40px;
+        font-weight: 600;
+    
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .detailrow{
+        width: 82%;
+    }
+
+    .card-text-temp{
+        font-size: 40px;
+        font-weight: 600;
+    
+    }
+
+    .title-row {
+        position: relative;
+        left: 25%;
+    }
+
+    .detailrow{
+        position: relative;
+        right: 5%;
+    }
+    
+    .bottom-vl{
+        height: 120px;
+    }
+
+    .card-text-pressure{
+        margin-top: 30px;
+    }
+}
+

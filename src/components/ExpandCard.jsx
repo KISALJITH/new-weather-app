@@ -5,38 +5,45 @@ import backArrow from "./../images/arrow.png";
 import "./../styles/expandCard.css";
 import cloud from "./../images/cloud.png";
 import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ExpandCard() {
 
   const [searchParams, setSearchParam] = useSearchParams()
 
+  const navigate = useNavigate();
+  const backToHome= ()=>{
+    navigate({pathname:"/"})
+  }
+
+
   return (
     <div className="card-outer">
       <div className="card card-inner col-lg-8">
         <div className="card-header">
-          <button type="button" className="btn-backward">
+          <button type="button" className="btn-backward" onClick={backToHome}>
             <img src={backArrow} />
             {/* <i class="bi bi-arrow-left"></i> */}
           </button>
 
           <div class="row">
-            <div class="col-md-6 offset-lg-3">
-              <h2 className="card-text-city">{searchParams.get('cityName')}, Lk</h2>
+            <div class="col-md-6 offset-lg-3 title-raw">
+              <h2 className="card-text-city">{searchParams.get('cityName')},{searchParams.get('country')}</h2>
               <h1 className="card-text-timeDate">9:19am, Feb 8</h1>
             </div>
           </div>
 
           <div class="row justify-content-center detailrow offset-md-2">
             <div class="col-3">
-              <img src={cloud} />
+              <img className="cloud-img" src={cloud} />
               {/* <i class="bi bi-cloud"></i> */}
-              <p className="card-text-skyType">Few Clouds</p>
+              <p className="card-text-skyType">{searchParams.get('status')}</p>
             </div>
             <div class="col-1 top-vl"></div>
             <div class="col-3">
-              <p className="card-text-temp">27° c</p>
-              <p className="card-text-minTemp">Temp min: 25°c</p>
-              <p className="card-text-maxTemp">Temp max: 27°c</p>
+              <p className="card-text-temp">{searchParams.get('temp')}° c</p>
+              <p className="card-text-minTemp">Temp min: {searchParams.get('mintemp')}°c</p>
+              <p className="card-text-maxTemp">Temp max: {searchParams.get('maxtemp')}°c</p>
             </div>
           </div>
         </div>
@@ -46,9 +53,9 @@ function ExpandCard() {
             <div className="col-md-4">
               <div className="card card-segment">
                 <div className="card-body">
-                  <p className="card-text-pressure">Pressure: <span className="input-details">1018hPa</span></p>
-                  <p className="card-text-humidity">Humidity: <span className="input-details">78%</span></p>
-                  <p className="card-text-visibility">Visibility: <span className="input-details">8.0km</span></p>
+                  <p className="card-text-pressure">Pressure: <span className="input-details">{searchParams.get('pressure')}Pa</span></p>
+                  <p className="card-text-humidity">Humidity: <span className="input-details">{searchParams.get('humidity')}%</span></p>
+                  <p className="card-text-visibility">Visibility: <span className="input-details">{searchParams.get('visibility')}km</span></p>
                 </div>
               </div>
             </div>
@@ -59,7 +66,7 @@ function ExpandCard() {
                   <div className="card-text-imgNavigation offset-md-5">
                     <img src={navigationImg} />
                   </div>
-                  <p className="card-text-wind">4.0m/s 120 Degree</p>
+                  <p className="card-text-wind">{searchParams.get('speed')}m/s {searchParams.get('deg')} Degree</p>
                 </div>
               </div>
             </div>

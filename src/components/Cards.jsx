@@ -9,7 +9,7 @@ function Cards() {
       <div className="city-list">
         <div className="row">
         {cities.List.map((city) => (
-            <div className="col-6"> <Card key={city.CityCode} city={city} /></div>
+            <div className="col-lg-6 col-sm-12"> <Card key={city.CityCode} city={city} /></div>
          
         ))}
         </div>
