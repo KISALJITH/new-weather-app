@@ -1,7 +1,7 @@
 import React from "react";
 import backgroundImg from "./../images/Rectangle.png";
 import navigationImg from "./../images/navigation.png";
-import backArrow from "./../images/arrow.png";
+import backArrow from "./../images/back.png";
 import "./../styles/expandCard.css";
 import cloud from "./../images/cloud.png";
 import { useSearchParams } from "react-router-dom";
@@ -19,7 +19,7 @@ function ExpandCard() {
 
   return (
     <div className="card-outer">
-      <div className="card card-inner col-lg-8">
+      <div className="container card card-inner col-lg-8">
         <div className="card-header">
           <button type="button" className="btn-backward" onClick={backToHome}>
             <img src={backArrow} />
@@ -28,13 +28,13 @@ function ExpandCard() {
 
           <div class="row">
             <div class="col-md-6 offset-lg-3 title-raw">
-              <h2 className="card-text-city">{searchParams.get('cityName')},{searchParams.get('country')}</h2>
-              <h1 className="card-text-timeDate">9:19am, Feb 8</h1>
+              <h2 className="card-text-city">{searchParams.get('cityName')}, {searchParams.get('country')}</h2>
+              <h1 className="card-text-timeDate">{searchParams.get('hour')}: {searchParams.get('min')} am, Oct {searchParams.get('day')}</h1>
             </div>
           </div>
 
           <div class="row justify-content-center detailrow offset-md-2">
-            <div class="col-3">
+            <div class="col-3 status-row">
               <img className="cloud-img" src={cloud} />
               {/* <i class="bi bi-cloud"></i> */}
               <p className="card-text-skyType">{searchParams.get('status')}</p>
@@ -42,8 +42,8 @@ function ExpandCard() {
             <div class="col-1 top-vl"></div>
             <div class="col-3">
               <p className="card-text-temp">{searchParams.get('temp')}° c</p>
-              <p className="card-text-minTemp">Temp min: {searchParams.get('mintemp')}°c</p>
-              <p className="card-text-maxTemp">Temp max: {searchParams.get('maxtemp')}°c</p>
+              <p className="card-text-minTemp">Temp min : {searchParams.get('mintemp')}°c</p>
+              <p className="card-text-maxTemp">Temp max : {searchParams.get('maxtemp')}°c</p>
             </div>
           </div>
         </div>
@@ -53,9 +53,9 @@ function ExpandCard() {
             <div className="col-md-4">
               <div className="card card-segment">
                 <div className="card-body">
-                  <p className="card-text-pressure">Pressure: <span className="input-details">{searchParams.get('pressure')}Pa</span></p>
-                  <p className="card-text-humidity">Humidity: <span className="input-details">{searchParams.get('humidity')}%</span></p>
-                  <p className="card-text-visibility">Visibility: <span className="input-details">{searchParams.get('visibility')}km</span></p>
+                  <p className="card-text-pressure">Pressure : <span className="input-details">{searchParams.get('pressure')}Pa</span></p>
+                  <p className="card-text-humidity">Humidity : <span className="input-details">{searchParams.get('humidity')}%</span></p>
+                  <p className="card-text-visibility">Visibility : <span className="input-details">{searchParams.get('visibility')}km</span></p>
                 </div>
               </div>
             </div>
@@ -64,7 +64,7 @@ function ExpandCard() {
               <div className="card card-segment">
                 <div className="card-body">
                   <div className="card-text-imgNavigation offset-md-5">
-                    <img src={navigationImg} />
+                    <img  className="navigation-img" src={navigationImg} />
                   </div>
                   <p className="card-text-wind">{searchParams.get('speed')}m/s {searchParams.get('deg')} Degree</p>
                 </div>
@@ -74,8 +74,8 @@ function ExpandCard() {
             <div className="col-md-3">
               <div className="card card-segment sunrise-detail-col">
                 <div className="card-body">
-                  <p className="card-text-sunrise">Sunrise: <span className="input-details">07:00am</span></p>
-                  <p className="card-text-sunset">Sunset: <span className="input-details">07:00pm</span></p>
+                  <p className="card-text-sunrise">Sunrise : <span className="input-details">07:00am</span></p>
+                  <p className="card-text-sunset">Sunset : <span className="input-details">07:00pm</span></p>
                 </div>
               </div>
             </div>

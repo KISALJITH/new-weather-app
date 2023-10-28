@@ -70,13 +70,18 @@ const Card = ({ city }) => {
   };
 
   function getDateDetails() {
-    const date = new Date(weatherData.dt*1000);
+    const date = getLocalTime();
 
     const month = date.getMonth() + 1; // Months are zero-indexed, so we add 1
     const day = date.getDate();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    return date;
+    return {
+      month,
+      day,
+      hours,
+      minutes
+    };
   }
 
   function getLocalTime() {
@@ -88,24 +93,27 @@ const Card = ({ city }) => {
     return new Date(localTimeMilliseconds);
   }
 
-  function createMonth() {
-    var day = new Date(Date.now() * 1000);
-        let options = {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",}
-        return day.toLocaleString("en-us", { month: "long" }); // Friday
-}
-function createDay() {
-  var day = new Date(Date.now() * 1000);
-      let options = {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",}
-      return day.toLocaleString("en-us", { day: "long" }); // Friday
-}
+  function getSunriseDetails() {
+    const date = getsunrise();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    console.log(hours);
+    return {
+      hours,
+      minutes
+    };
+  }
+
+  function getsunrise() {
+    const x = weatherData.sys.sunrise;
+    const y = weatherData.timezone;
+    const dt = x * 1000; // Convert Unix timestamp to milliseconds
+    const timezoneOffsetSeconds = y;
+    const localTimeMilliseconds = x + timezoneOffsetSeconds * 1000;
+    console.log(localTimeMilliseconds);
+    return new Date(localTimeMilliseconds);
+  }
+
   const navigate = useNavigate();
   const toggleView = () => {
     // Navigate to the city-details route with query parameters
@@ -121,7 +129,9 @@ function createDay() {
         &humidity=${weatherData.main.humidity}
         &visibility=${weatherData.visibility / 1000}
         &speed=${weatherData.wind.speed}
-        &deg=${weatherData.wind.deg}
+        &hour=${getDateDetails().hours}
+        &min=${getDateDetails().minutes}
+        &day=${getDateDetails().day}
 
         `,
     });
@@ -149,9 +159,9 @@ function createDay() {
                               {weatherData.name}, {weatherData.sys.country}
                             </p>
                             <p className="card-text-timeDate-cd">
-                              {/* {getLocalTime().toDateString()} : */}
-                              {getLocalTime().minutes}am,{" "}
-                              {createMonth()} {createDay()}
+                              {getDateDetails().hours} :
+                              {getDateDetails().minutes}am,{" "}
+                              Oct {getDateDetails().day}
                             </p>
                             <div className="status-details">
                               <img className="cloud-img " src={cloud} />
@@ -229,8 +239,8 @@ function createDay() {
                           <p className="card-text-sunrise-cd">
                             Sunrise:
                             <span className="input-details">
-                              {/* {getSunriseDetails().hours} :
-                              {getSunriseDetails().minutes} am */}
+                              {getSunriseDetails().hours} :
+                              {getSunriseDetails().minutes} am
                             </span>
                           </p>
                           <p className="card-text-sunset-cd">

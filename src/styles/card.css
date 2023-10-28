@@ -5,7 +5,6 @@
     display: flex;
 }
 .card-inner-cd{
-    /* width: 579px; */
     border: transparent;
     border: none;
     background-color: transparent;
@@ -150,4 +149,76 @@
 
     align-items: center;
 }
+
+/* media queries */
+
+@media only screen and (max-width: 1300px) {
+    .card-upper-cd{
+        width: 520px;
+    }
+
+    .card-lower-cd{
+        width: 520px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .card-upper-cd{
+        width: 430px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-lower-cd{
+        width: 430px;
+    }
+}
+
+
+@media only screen and (max-width: 750px) {
+
+    .card-upper-cd{
+        width: 360px;
+    }
+
+    .card-lower-cd{
+        width: 360px;
+    }
+
+    .card-upper-cd{
+        height: 350px;
+    }
+
+    .card-text-city-cd{
+        margin-bottom: 0;
+    }
+    
+    .card-text-timeDate-cd{
+        margin-bottom: 35px;
+    }
+
+    .card-text-pressure-cd, .card-text-humidity-cd, .card-text-visibility-cd{
+        font-size: 14px;
+    }
+    
+    .card-text-sunrise-cd, .card-text-sunset-cd{
+        font-size: 14px;
+    }
+    
+    .card-text-wind-cd{
+        font-size: 14px;
+    }
+    
+    .card-text-imgNavigation-cd{
+        align-items: center;
+    }
+
+    .card-text-imgNavigation-cd{
+        position: relative;
+        left: 50px;
+    }
+    
+}
+
+
 

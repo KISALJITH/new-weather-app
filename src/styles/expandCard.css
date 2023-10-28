@@ -6,6 +6,7 @@
 .card-inner{
     width: 1000px;
     background-color: transparent; 
+    border: transparent;
 }
 
 .card-header{
@@ -13,7 +14,7 @@
 }
 
 .btn-backward{
-    background-color: none;
+    background-color: transparent;
     border: none;
     border-radius: 100px;
 }
@@ -21,6 +22,7 @@
 .card-lower{   
     background-color: #383b47;
     width: 100%;
+    border-radius: 0 0 5px 5px;
 }
 
 .detailrow{
@@ -101,7 +103,7 @@
 }
 
 .card-text-temp{
-    font-size: 55px;
+    font-size: 33px;
     line-height: 69px;
     text-transform: uppercase;
     color: #ffffff;
@@ -184,51 +186,78 @@
     }
 
     .card-text-temp{
-        font-size: 50px;
+        font-size: 30px;
         font-weight: 600;
+    
+    }
+
+    .card-text-minTemp{
+        font-size: 14px;
+    }
+    
+    .card-text-maxTemp{
+        font-size: 14px;
     
     }
 }
 
 @media only screen and (max-width: 1000px) {
     .detailrow{
-        width: 82%;
+        width: 100%;
+        position: relative;
+        right: 70px;
     }
 
-    .card-text-temp{
-        font-size: 40px;
-        font-weight: 600;
-    
+    .title-raw{
+        position: relative;
+        left: 200px;
     }
+
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 750px) {
+
     .detailrow{
-        width: 82%;
+        width: 650px;
+    }
+
+    .title-raw{
+        position: relative;
+        left: 0px;
     }
 
     .card-text-temp{
-        font-size: 40px;
+        font-size: 33px;
         font-weight: 600;
-    
-    }
-
-    .title-row {
-        position: relative;
-        left: 25%;
-    }
-
-    .detailrow{
-        position: relative;
-        right: 5%;
     }
     
     .bottom-vl{
-        height: 120px;
+        display: none;
     }
 
-    .card-text-pressure{
-        margin-top: 30px;
+    .below-detail-row{
+        display: flex;
+        position: relative;
+        left: 50px;
     }
+
+    .card-text-imgNavigation{
+
+        position: relative;
+        left: 50px;
+    }
+
 }
 
+
+@media only screen and (max-width: 575px) {
+
+    .card-inner{
+        width: 500px;
+    }
+
+    .detailrow{
+        width: 650px;
+    }
+
+}
