@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./../styles/card.css";
-import backgroundImg from "./../images/Rectangle.png";
 import navigationImg from "./../images/navigation.png";
 import cloud from "./../images/cloud.png";
-import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
+// const appiKey = process.env.REACT_APP_API_KEY
+// console.log(apiKey)
 const Card = ({ city }) => {
+
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
@@ -21,13 +23,14 @@ const Card = ({ city }) => {
     }
   }, [city]);
 
+ 
+
   const fetchWeatherData = (city) => {
     fetch(
       `https://api.openweathermap.org/geo/1.0/direct?q=${city.CityName}&limit=1&appid=1b9025c8807b39fb51111690d8e3022f`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         const { lat, lon } = data[0];
         return fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=1b9025c8807b39fb51111690d8e3022f`
@@ -72,7 +75,7 @@ const Card = ({ city }) => {
   function getDateDetails() {
     const date = getLocalTime();
 
-    const month = date.getMonth() + 1; // Months are zero-indexed, so we add 1
+    const month = date.getMonth() + 1;
     const day = date.getDate();
     const hours = date.getHours();
     const minutes = date.getMinutes();

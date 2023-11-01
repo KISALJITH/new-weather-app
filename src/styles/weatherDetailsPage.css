@@ -1,16 +1,15 @@
-*{
-    margin: 0 px;
-    padding: 0 px;
- }
+* {
+  margin: 0 px;
+  padding: 0 px;
+}
 
-.background{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('./../images/Rectangle.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(29, 29, 30);
-    
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./../images/Rectangle.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgb(29, 29, 30);
 }

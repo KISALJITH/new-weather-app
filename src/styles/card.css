@@ -19,7 +19,6 @@
     background-color: #378de7;
     width: 579px;
     border: transparent;
-
     background-image: url('./../images/Rectangle.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -96,7 +95,7 @@
 
 }
 
-.card-text-minTemp-cd{
+.card-text-minTemp-cd, .card-text-maxTemp-cd{
     font-size: 12px;
     line-height: 24px;
     color: #ffffff;
@@ -106,19 +105,9 @@
     margin-bottom: 0;
 }
 
-.card-text-maxTemp-cd{
-    font-size: 12px;
-    line-height: 24px;
-    color: #ffffff;
-    font-weight: 600;
-    font-family: "Open Sans";
-    text-align: center;
-
-}
-
 .card-text-pressure-cd, .card-text-humidity-cd, .card-text-visibility-cd{
     font-size: 12px;
-    line-height: 29px;
+    line-height: 24px;
     color: #ffffff;
     font-weight: 700;
     font-family: "Open Sans";
@@ -128,11 +117,11 @@
 
 .card-text-sunrise-cd, .card-text-sunset-cd{
     font-size: 12px;
-    line-height: 30px;
+    line-height: 24px;
     color: #ffffff;
     font-weight: 700;
     font-family: "Open Sans";
-    text-align: right;
+    text-align: left;
     margin-bottom: 0;
 }
 
@@ -146,11 +135,8 @@
 }
 
 .card-text-imgNavigation-cd{
-
     align-items: center;
 }
-
-/* media queries */
 
 @media only screen and (max-width: 1300px) {
     .card-upper-cd{
@@ -175,38 +161,23 @@
 }
 
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 575px) {
 
     .card-upper-cd{
-        width: 360px;
+        width: 280px;
+        height: 280px;
     }
 
     .card-lower-cd{
-        width: 360px;
-    }
-
-    .card-upper-cd{
-        height: 350px;
+        width: 280px;
     }
 
     .card-text-city-cd{
         margin-bottom: 0;
     }
     
-    .card-text-timeDate-cd{
-        margin-bottom: 35px;
-    }
-
-    .card-text-pressure-cd, .card-text-humidity-cd, .card-text-visibility-cd{
-        font-size: 14px;
-    }
-    
-    .card-text-sunrise-cd, .card-text-sunset-cd{
-        font-size: 14px;
-    }
-    
-    .card-text-wind-cd{
-        font-size: 14px;
+    .card-text-pressure-cd, .card-text-humidity-cd, .card-text-visibility-cd, .card-text-sunrise-cd, .card-text-sunset-cd, .card-text-wind-cd{
+        font-size: 13px;
     }
     
     .card-text-imgNavigation-cd{
@@ -215,10 +186,33 @@
 
     .card-text-imgNavigation-cd{
         position: relative;
-        left: 50px;
+        left: 30px;
+    } 
+    .card-text-skyType-cd{
+        line-height: 18px;
+        font-size: 12px;
     }
-    
-}
 
+    .card-text-temp-cd{
+        font-size: 35px;
+        line-height: 45px;
+    }
+
+    .card-text-city-cd{
+        font-size: 18px;
+    }
+
+    .cloud-img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .card-text-imgNavigation-cd{
+        align-items: center;
+        height: 15px;
+        width: 15px;
+    }
+   
+}
 
 
