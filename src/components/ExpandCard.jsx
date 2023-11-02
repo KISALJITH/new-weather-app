@@ -1,5 +1,4 @@
 import React from "react";
-import backgroundImg from "./../images/Rectangle.png";
 import navigationImg from "./../images/navigation.png";
 import backArrow from "./../images/back.png";
 import "./../styles/expandCard.css";
@@ -16,14 +15,12 @@ function ExpandCard() {
     navigate({pathname:"/"})
   }
 
-
   return (
     <div className="card-outer">
       <div className="container card card-inner col-lg-8">
         <div className="card-header">
           <button type="button" className="btn-backward" onClick={backToHome}>
             <img src={backArrow} />
-            {/* <i class="bi bi-arrow-left"></i> */}
           </button>
 
           <div class="row">
@@ -36,7 +33,6 @@ function ExpandCard() {
           <div class="row justify-content-center detailrow offset-md-2">
             <div class="col-3 status-row">
               <img className="cloud-img" src={cloud} />
-              {/* <i class="bi bi-cloud"></i> */}
               <p className="card-text-skyType">{searchParams.get('status')}</p>
             </div>
             <div class="col-1 top-vl"></div>

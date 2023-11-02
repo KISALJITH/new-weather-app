@@ -4,12 +4,14 @@ import navigationImg from "./../images/navigation.png";
 import cloud from "./../images/cloud.png";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import { API_BASE_URL, API_ENDPOINT, API_QUERY_PARAMS, API_KEY} from "../apiHelper/geoAPI";
+import GeoApi from "../apiHelper/geoAPI";
+import WeatherApi from "../apiHelper/weatherApi";
+import { OPENWEATHERMAP_API_BASE_URL, WEATHER_ENDPOINT, UNITS} from "../apiHelper/weatherApi";
 
-// const appiKey = process.env.REACT_APP_API_KEY
-// console.log(apiKey)
+// const apiKey = process.env.REACT_APP_API_KEY;
+
 const Card = ({ city }) => {
-
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
@@ -18,39 +20,35 @@ const Card = ({ city }) => {
     if (cachedData) {
       setWeatherData(cachedData);
     } else {
-      // Fetch data if not cached
       fetchWeatherData(city);
     }
   }, [city]);
 
- 
-
   const fetchWeatherData = (city) => {
+    const geoObj =new GeoApi();
     fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${city.CityName}&limit=1&appid=1b9025c8807b39fb51111690d8e3022f`
-    )
+      // apiUrl
+      geoObj.getGeoUrl(city)
+      )
       .then((response) => response.json())
       .then((data) => {
         const { lat, lon } = data[0];
-        return fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=1b9025c8807b39fb51111690d8e3022f`
-        );
+        const wheatherObj = new WeatherApi();
+
+        // const apiWeatherUrl = wheatherObj.getWeatherUrl(lat, lon)
+
+        // const apiWeatherUrl = `${OPENWEATHERMAP_API_BASE_URL}${WEATHER_ENDPOINT}?lat=${lat}&lon=${lon}&units=${UNITS}&appid=${apiKey}`;
+
+        return fetch(wheatherObj.getWheatherUrl(lat, lon));
       })
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
-        // Cache the data with a 5-minute expiration
-        cacheData(city.CityCode, data);
+        getCachedData(city.CityCode, data);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
       });
-  };
-
-  const cacheData = (key, data) => {
-    const cacheTime = new Date().getTime();
-    const cachedData = { data, cacheTime };
-    localStorage.setItem(key, JSON.stringify(cachedData));
   };
 
   const getCachedData = (key) => {
@@ -74,7 +72,6 @@ const Card = ({ city }) => {
 
   function getDateDetails() {
     const date = getLocalTime();
-
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const hours = date.getHours();
@@ -83,12 +80,12 @@ const Card = ({ city }) => {
       month,
       day,
       hours,
-      minutes
+      minutes,
     };
   }
 
   function getLocalTime() {
-     const x = Date.now();
+    const x = Date.now();
     const dt = x / 1000; // Convert Unix timestamp to milliseconds
     const timezoneOffsetSeconds = weatherData.timezone;
     const localTimeMilliseconds = dt + timezoneOffsetSeconds * 1000;
@@ -100,20 +97,19 @@ const Card = ({ city }) => {
     const date = getsunrise();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    console.log(hours);
     return {
       hours,
-      minutes
+      minutes,
     };
   }
 
   function getsunrise() {
     const x = weatherData.sys.sunrise;
     const y = weatherData.timezone;
-    const dt = x * 1000; // Convert Unix timestamp to milliseconds
+    const dt = x * 1000; 
     const timezoneOffsetSeconds = y;
     const localTimeMilliseconds = x + timezoneOffsetSeconds * 1000;
-    console.log(localTimeMilliseconds);
+
     return new Date(localTimeMilliseconds);
   }
 
@@ -145,8 +141,8 @@ const Card = ({ city }) => {
         <div className="card-outer-cd" onClick={toggleView}>
           <div className="card card-inner-cd">
             <div className="card-rows col-md-6">
-              <div class="card text-bg-dark-cd card-upper-cd">
-                <div class="card-img-overlay">
+              <div className="card text-bg-dark-cd card-upper-cd">
+                <div className="card-img-overlay">
                   <div className="container">
                     <button
                       type="button"
@@ -163,8 +159,8 @@ const Card = ({ city }) => {
                             </p>
                             <p className="card-text-timeDate-cd">
                               {getDateDetails().hours} :
-                              {getDateDetails().minutes}am,{" "}
-                              Oct {getDateDetails().day}
+                              {getDateDetails().minutes}am, Oct{" "}
+                              {getDateDetails().day}
                             </p>
                             <div className="status-details">
                               <img className="cloud-img " src={cloud} />

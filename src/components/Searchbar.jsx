@@ -4,16 +4,16 @@ import "./../styles/searchbar.css"
 function Searchbar() {
   return (
     <div className="search-outer">
-      <nav class="navbar searchbar">
-        <div class="container-fluid">
-          <form class="d-flex" role="search">
+      <nav className="navbar searchbar">
+        <div className="container-fluid">
+          <form className="d-flex" role="search">
             <input
-              class="form-control search-text-input"
+              className="form-control search-text-input"
               type="search"
               placeholder="Enter a city"
               aria-label="Search"
             />
-            <button class="btn btn-primary btn-search" type="submit">
+            <button className="btn btn-primary btn-search" type="submit">
               Add city
             </button>
           </form>
