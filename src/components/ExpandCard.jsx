@@ -23,20 +23,20 @@ function ExpandCard() {
             <img src={backArrow} />
           </button>
 
-          <div class="row">
-            <div class="col-md-6 offset-lg-3 title-raw">
+          <div className="row">
+            <div className="col-md-6 offset-lg-3 title-raw">
               <h2 className="card-text-city">{searchParams.get('cityName')}, {searchParams.get('country')}</h2>
-              <h1 className="card-text-timeDate">{searchParams.get('hour')}: {searchParams.get('min')} am, Oct {searchParams.get('day')}</h1>
+              <h1 className="card-text-timeDate">{searchParams.get('time')}</h1>
             </div>
           </div>
 
-          <div class="row justify-content-center detailrow offset-md-2">
-            <div class="col-3 status-row">
+          <div className="row justify-content-center detailrow offset-md-2">
+            <div className="col-3 status-row">
               <img className="cloud-img" src={cloud} />
               <p className="card-text-skyType">{searchParams.get('status')}</p>
             </div>
-            <div class="col-1 top-vl"></div>
-            <div class="col-3">
+            <div className="col-1 top-vl"></div>
+            <div className="col-3">
               <p className="card-text-temp">{searchParams.get('temp')}° c</p>
               <p className="card-text-minTemp">Temp min : {searchParams.get('mintemp')}°c</p>
               <p className="card-text-maxTemp">Temp max : {searchParams.get('maxtemp')}°c</p>
@@ -70,8 +70,8 @@ function ExpandCard() {
             <div className="col-md-3">
               <div className="card card-segment sunrise-detail-col">
                 <div className="card-body">
-                  <p className="card-text-sunrise">Sunrise : <span className="input-details">07:00am</span></p>
-                  <p className="card-text-sunset">Sunset : <span className="input-details">07:00pm</span></p>
+                  <p className="card-text-sunrise">Sunrise : <span className="input-details">{searchParams.get('sunrise')}</span></p>
+                  <p className="card-text-sunset">Sunset : <span className="input-details">{searchParams.get('sunset')}</span></p>
                 </div>
               </div>
             </div>

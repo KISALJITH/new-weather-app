@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import GeoApi from "../apiHelper/geoAPI";
 import WeatherApi from "../apiHelper/weatherApi";
+import moment from "moment-timezone";
 
 const Card = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -21,10 +22,8 @@ const Card = ({ city }) => {
   }, [city]);
 
   const fetchWeatherData = (city) => {
-    const geoObj =new GeoApi();
-    fetch(
-      geoObj.getGeoUrl(city)
-      )
+    const geoObj = new GeoApi();
+    fetch(geoObj.getGeoUrl(city))
       .then((response) => response.json())
       .then((data) => {
         const { lat, lon } = data[0];
@@ -67,47 +66,30 @@ const Card = ({ city }) => {
     return null;
   };
 
-  function getDateDetails() {
-    const date = getLocalTime();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return {
-      month,
-      day,
-      hours,
-      minutes,
-    };
-  }
-
   function getLocalTime() {
-    const x = Date.now();
-    const dt = x / 1000; // Convert Unix timestamp to milliseconds
-    const timezoneOffsetSeconds = weatherData.timezone;
-    const localTimeMilliseconds = dt + timezoneOffsetSeconds * 1000;
-
-    return new Date(localTimeMilliseconds);
+    const formattedDateTime = moment
+      .unix(weatherData.dt + weatherData.timezone)
+      .tz("Etc/GMT")
+      .format("HH:mm a MMM-DD ");
+    return formattedDateTime;
   }
 
-  function getSunriseDetails() {
-    const date = getsunrise();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return {
-      hours,
-      minutes,
-    };
+  function calculateSunTime(time) {
+    const sunTime = moment
+      .unix(time + weatherData.timezone)
+      .tz("Etc/GMT")
+      .format("HH:mm a");
+    return sunTime;
   }
 
-  function getsunrise() {
-    const x = weatherData.sys.sunrise;
-    const y = weatherData.timezone;
-    const dt = x * 1000; 
-    const timezoneOffsetSeconds = y;
-    const localTimeMilliseconds = x + timezoneOffsetSeconds * 1000;
+  function getSunriseDetails(time) {
+    const sunriceTime = calculateSunTime(time);
+    return sunriceTime;
+  }
 
-    return new Date(localTimeMilliseconds);
+  function getSunsetDetails() {
+    const sunsetTime = calculateSunTime(weatherData.sys.sunset);
+    return sunsetTime;
   }
 
   const navigate = useNavigate();
@@ -125,9 +107,10 @@ const Card = ({ city }) => {
         &humidity=${weatherData.main.humidity}
         &visibility=${weatherData.visibility / 1000}
         &speed=${weatherData.wind.speed}
-        &hour=${getDateDetails().hours}
-        &min=${getDateDetails().minutes}
-        &day=${getDateDetails().day}
+        &time=${getLocalTime()}
+        &sunrise=${getSunriseDetails(weatherData.sys.sunrise)}
+        &sunset=${getSunriseDetails(weatherData.sys.sunset)}
+       
 
         `,
     });
@@ -155,9 +138,7 @@ const Card = ({ city }) => {
                               {weatherData.name}, {weatherData.sys.country}
                             </p>
                             <p className="card-text-timeDate-cd">
-                              {getDateDetails().hours} :
-                              {getDateDetails().minutes}am, Oct{" "}
-                              {getDateDetails().day}
+                              {getLocalTime()}
                             </p>
                             <div className="status-details">
                               <img className="cloud-img " src={cloud} />
@@ -235,15 +216,13 @@ const Card = ({ city }) => {
                           <p className="card-text-sunrise-cd">
                             Sunrise:
                             <span className="input-details">
-                              {getSunriseDetails().hours} :
-                              {getSunriseDetails().minutes} am
+                              {getSunriseDetails(weatherData.sys.sunrise)}
                             </span>
                           </p>
                           <p className="card-text-sunset-cd">
                             Sunset:
                             <span className="input-details">
-                              {getDateDetails(weatherData.sys.sunset).hours} :
-                              {getDateDetails(weatherData.sys.sunset).minutes}pm
+                              {getSunsetDetails(weatherData.sys.sunset)}
                             </span>
                           </p>
                         </div>
