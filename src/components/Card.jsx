@@ -4,12 +4,8 @@ import navigationImg from "./../images/navigation.png";
 import cloud from "./../images/cloud.png";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { API_BASE_URL, API_ENDPOINT, API_QUERY_PARAMS, API_KEY} from "../apiHelper/geoAPI";
 import GeoApi from "../apiHelper/geoAPI";
 import WeatherApi from "../apiHelper/weatherApi";
-import { OPENWEATHERMAP_API_BASE_URL, WEATHER_ENDPOINT, UNITS} from "../apiHelper/weatherApi";
-
-// const apiKey = process.env.REACT_APP_API_KEY;
 
 const Card = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -27,7 +23,6 @@ const Card = ({ city }) => {
   const fetchWeatherData = (city) => {
     const geoObj =new GeoApi();
     fetch(
-      // apiUrl
       geoObj.getGeoUrl(city)
       )
       .then((response) => response.json())
@@ -35,23 +30,25 @@ const Card = ({ city }) => {
         const { lat, lon } = data[0];
         const wheatherObj = new WeatherApi();
 
-        // const apiWeatherUrl = wheatherObj.getWeatherUrl(lat, lon)
-
-        // const apiWeatherUrl = `${OPENWEATHERMAP_API_BASE_URL}${WEATHER_ENDPOINT}?lat=${lat}&lon=${lon}&units=${UNITS}&appid=${apiKey}`;
-
         return fetch(wheatherObj.getWheatherUrl(lat, lon));
       })
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
-        getCachedData(city.CityCode, data);
+        cacheData(city.CityCode, data);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
       });
   };
 
-  const getCachedData = (key) => {
+  const cacheData = (key, data) => {
+    const cacheTime = new Date().getTime();
+    const cachedData = { data, cacheTime };
+    localStorage.setItem(key, JSON.stringify(cachedData));
+  };
+
+  const getCachedData = (key, data) => {
     const cachedData = localStorage.getItem(key);
 
     if (cachedData) {
