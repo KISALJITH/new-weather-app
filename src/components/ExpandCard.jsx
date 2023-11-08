@@ -3,8 +3,7 @@ import navigationImg from "./../images/navigation.png";
 import backArrow from "./../images/back.png";
 import "./../styles/expandCard.css";
 import cloud from "./../images/cloud.png";
-import { useSearchParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 function ExpandCard() {
 
@@ -30,16 +29,18 @@ function ExpandCard() {
             </div>
           </div>
 
-          <div className="row justify-content-center detailrow offset-md-2">
-            <div className="col-3 status-row">
+          <div className="row offset-md-2">
+            <div className="detailrow">
+            <div className="col-3 status-row upper-inner-box">
               <img className="cloud-img" src={cloud} />
               <p className="card-text-skyType">{searchParams.get('status')}</p>
             </div>
             <div className="col-1 top-vl"></div>
-            <div className="col-3">
+            <div className="col-3 upper-inner-box">
               <p className="card-text-temp">{searchParams.get('temp')}° c</p>
               <p className="card-text-minTemp">Temp min : {searchParams.get('mintemp')}°c</p>
               <p className="card-text-maxTemp">Temp max : {searchParams.get('maxtemp')}°c</p>
+            </div>
             </div>
           </div>
         </div>
@@ -55,7 +56,7 @@ function ExpandCard() {
                 </div>
               </div>
             </div>
-            <div class="col-md-1 bottom-vl"></div>
+            <div className="col-md-1 bottom-vl"></div>
             <div className="col-md-3 border-left border-right">
               <div className="card card-segment">
                 <div className="card-body">
@@ -66,7 +67,7 @@ function ExpandCard() {
                 </div>
               </div>
             </div>
-            <div class="col-md-1 bottom-vl"></div>
+            <div className="col-md-1 bottom-vl"></div>
             <div className="col-md-3">
               <div className="card card-segment sunrise-detail-col">
                 <div className="card-body">

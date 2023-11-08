@@ -1,25 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {getLocalTime, getSunsetDetails, getSunriseDetails} from './../services/calculations/timeCalculation'
 import "./../styles/card.css";
 import navigationImg from "./../images/navigation.png";
+import {} from './../services/calculations/timeCalculation'
 import cloud from "./../images/cloud.png";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import GeoApi from "../apiHelper/geoAPI";
-import WeatherApi from "../apiHelper/weatherApi";
-import moment from "moment-timezone";
+import GeoApi from "./../services/apiHelper/geoAPI";
+import WeatherApi from "../services/apiHelper/weatherApi";
 
-const Card = ({ city }) => {
+// const Card = ({ city }) => {
+function Card(props){
+
   const [weatherData, setWeatherData] = useState(null);
 
+  const getCachedData = (key) => {
+    const cachedData = localStorage.getItem(key);
+
+    if (cachedData) {
+      const { data, cacheTime } = JSON.parse(cachedData);
+      const currentTime = new Date().getTime();
+      // Check if the cached data has not expired (5 minutes)
+      if (currentTime - cacheTime <= 5 * 60 * 1000) {
+        return data;
+      } else {
+        // Remove expired cached data
+        localStorage.removeItem(key);
+        fetchWeatherData(props.city);
+      }
+    }
+    return null;
+  };
+
   useEffect(() => {
-    const cachedData = getCachedData(city.CityCode);
+    const cachedData = getCachedData(props.city.CityCode);
 
     if (cachedData) {
       setWeatherData(cachedData);
     } else {
-      fetchWeatherData(city);
+      fetchWeatherData(props.city);
     }
-  }, [city]);
+  }, []);
 
   const fetchWeatherData = (city) => {
     const geoObj = new GeoApi();
@@ -34,7 +54,7 @@ const Card = ({ city }) => {
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
-        cacheData(city.CityCode, data);
+        cacheData(props.city.CityCode, data);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
@@ -47,57 +67,12 @@ const Card = ({ city }) => {
     localStorage.setItem(key, JSON.stringify(cachedData));
   };
 
-  const getCachedData = (key, data) => {
-    const cachedData = localStorage.getItem(key);
-
-    if (cachedData) {
-      const { data, cacheTime } = JSON.parse(cachedData);
-      const currentTime = new Date().getTime();
-      // Check if the cached data has not expired (5 minutes)
-      if (currentTime - cacheTime <= 5 * 60 * 1000) {
-        return data;
-      } else {
-        // Remove expired cached data
-        localStorage.removeItem(key);
-        fetchWeatherData(city);
-      }
-    }
-
-    return null;
-  };
-
-  function getLocalTime() {
-    const formattedDateTime = moment
-      .unix(weatherData.dt + weatherData.timezone)
-      .tz("Etc/GMT")
-      .format("HH:mm a MMM-DD ");
-    return formattedDateTime;
-  }
-
-  function calculateSunTime(time) {
-    const sunTime = moment
-      .unix(time + weatherData.timezone)
-      .tz("Etc/GMT")
-      .format("HH:mm a");
-    return sunTime;
-  }
-
-  function getSunriseDetails(time) {
-    const sunriceTime = calculateSunTime(time);
-    return sunriceTime;
-  }
-
-  function getSunsetDetails() {
-    const sunsetTime = calculateSunTime(weatherData.sys.sunset);
-    return sunsetTime;
-  }
-
   const navigate = useNavigate();
   const toggleView = () => {
     // Navigate to the city-details route with query parameters
     navigate({
       pathname: "/description",
-      search: `?cityName=${city.CityName}
+      search: `?cityName=${props.city.CityName}
         &temp=${weatherData.main.temp}
         &country=${weatherData.sys.country}
         &status=${weatherData.weather[0].description}
@@ -107,11 +82,10 @@ const Card = ({ city }) => {
         &humidity=${weatherData.main.humidity}
         &visibility=${weatherData.visibility / 1000}
         &speed=${weatherData.wind.speed}
-        &time=${getLocalTime()}
-        &sunrise=${getSunriseDetails(weatherData.sys.sunrise)}
-        &sunset=${getSunriseDetails(weatherData.sys.sunset)}
+        &time=${getLocalTime(weatherData.dt, weatherData.timezone)}
+        &sunrise=${getSunriseDetails(weatherData.timezone, weatherData.sys.sunrise)}
+        &sunset=${getSunsetDetails(weatherData.timezone, weatherData.sys.sunset)}
        
-
         `,
     });
   };
@@ -138,7 +112,7 @@ const Card = ({ city }) => {
                               {weatherData.name}, {weatherData.sys.country}
                             </p>
                             <p className="card-text-timeDate-cd">
-                              {getLocalTime()}
+                              {getLocalTime(weatherData.dt, weatherData.timezone)}
                             </p>
                             <div className="status-details">
                               <img className="cloud-img " src={cloud} />
@@ -153,8 +127,8 @@ const Card = ({ city }) => {
                         <div className="card card-segment-cd">
                           <div className="card-body-cd">
                             <p className="card-text-temp-cd">
-                              {" "}
-                              {weatherData.main.temp} c
+                              {/* {" "} */}
+                              {weatherData.main.temp} °c
                             </p>
                             <p className="card-text-minTemp-cd">
                               Temp min: {weatherData.main.temp_min}°c
@@ -216,13 +190,13 @@ const Card = ({ city }) => {
                           <p className="card-text-sunrise-cd">
                             Sunrise:
                             <span className="input-details">
-                              {getSunriseDetails(weatherData.sys.sunrise)}
+                              {getSunriseDetails(weatherData.timezone, weatherData.sys.sunrise)}
                             </span>
                           </p>
                           <p className="card-text-sunset-cd">
                             Sunset:
                             <span className="input-details">
-                              {getSunsetDetails(weatherData.sys.sunset)}
+                              {getSunsetDetails(weatherData.timezone, weatherData.sys.sunset)}
                             </span>
                           </p>
                         </div>
@@ -234,7 +208,7 @@ const Card = ({ city }) => {
             </div>
           </div>
         </div>
-      )}{" "}
+      )}
     </div>
   );
 };

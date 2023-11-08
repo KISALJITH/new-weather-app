@@ -5,11 +5,13 @@
 
 .background {
   display: flex;
+  width: 100%;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("./../images/Rectangle.png");
-  background-size: contain;
+  background-image: url("./../images/Rectangle.png"); 
+  background-size: auto;
   background-repeat: no-repeat;
   background-color: rgb(29, 29, 30);
 }

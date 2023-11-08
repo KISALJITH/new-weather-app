@@ -3,6 +3,9 @@
     padding: 10px;
     border: transparent;
     display: flex;
+    justify-content: center;
+    border: 1px solid red; 
+    /*  */
 }
 .card-inner-cd{
     border: transparent;
@@ -12,12 +15,15 @@
     -webkit-box-shadow:0px 0px 10px 5px  #101010 ;
     -moz-box-shadow:0px 0px 10px 5px  #101010 ;
     box-shadow:0px 0px 10px 5px #101010 ;
+    border: 1px solid yellow;
+    /*  */
 }
 .card-upper-cd{
     height: 217px;
     border-radius: 8px 8px  0px 0px;
     background-color: #378de7;
-    width: 579px;
+    /* width: 579px; */
+    width: 200%;
     border: transparent;
     background-image: url('./../images/Rectangle.png');
     background-size: contain;
@@ -26,7 +32,8 @@
 }
 
 .card-lower-cd{
-    width: 579px;
+    /* width: 579px; */
+    width: 200%;
     border-radius:  0px 0px 8px 8px;
     background-color: #383b47;
 }
@@ -139,7 +146,7 @@
 }
 
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1350px) {
     .card-upper-cd{
         width: 430px;
         display: flex;
@@ -214,6 +221,17 @@
         width: 15px;
     }
    
+}
+
+@media only screen and (max-width: 400px) {
+    .card-upper-cd{
+        width: 100%;
+    }
+
+    .card-lower-cd{
+        width: 100%;
+    }
+
 }
 
 
