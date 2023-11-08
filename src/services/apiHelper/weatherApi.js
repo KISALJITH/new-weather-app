@@ -1,4 +1,9 @@
-import {OPENWEATHERMAP_API_BASE_URL, WEATHER_ENDPOINT, API_KEY, UNITS} from "./../../constants/constant";
+import {
+  OPENWEATHERMAP_API_BASE_URL,
+  WEATHER_ENDPOINT,
+  API_KEY,
+  UNITS,
+} from "./../../constants/constant";
 
 class WeatherApi {
   getWheatherUrl(lat, lon) {

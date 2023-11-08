@@ -1,26 +1,18 @@
 .card-outer{
     display: flex;
-    width: 80%;
-    margin-bottom: 110px;
+    width: 70%;
     margin-top: 12px;
-    border: 1px yellow solid;
 }
 .card-inner{
-    width: 80%;
+    width: 90%;
     background-color: transparent; 
     border: transparent;
-    border: 1px red solid;
     min-width: 190px;
 
 }
 
 .card-header{
     background-color: #2e95df;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-
 }
 
 .btn-backward{
@@ -37,7 +29,6 @@
 }
 
 .upper-inner-box{
-    border: 1px solid orangered;
     width: auto;
 }
 
@@ -45,10 +36,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-    /* position: relative; */
     width: 90%;
-    /* width: 200px; */
-    border: 1px red solid;
     height: auto;
 
 }
@@ -58,8 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: none; */
-    border: 1px solid goldenrod;
+    border: none;
     width: auto;
     margin-top: 10px;
 
@@ -73,8 +60,10 @@
 
 .top-vl{
     border-left: 3px solid #cdc9c9;
+    width: 3px;
     height: 140px;
-    border: 1px green solid;
+    margin-left: 10%;
+    margin-right: 10%;
 
 }
 
@@ -100,7 +89,6 @@
 }
 .upper-left{
     height: 200px;
-    border: 1px red solid;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -108,7 +96,6 @@
 }
 .upper-right{
     height: 200px;
-    border: 1px red solid;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,6 +197,13 @@
     margin-top: 22px;
 }
 
+.title-raw{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
 @media only screen and (max-width: 1200px) {
     .card-outer{
         display: flex;
@@ -240,12 +234,7 @@
     .detailrow{
         width: 100%;
         position: relative;
-        /* right: 70px; */
     }
-
-    /* .title-raw{
-        position: relative;
-    } */
 
 }
 
@@ -253,12 +242,6 @@
 
     .detailrow{
         width: 100%;
-
-    }
-
-    .title-raw{
-        position: relative;
-        left: 0px;
     }
 
     .card-text-temp{
@@ -279,8 +262,6 @@
     .card-text-maxTemp{
         font-size: 12px;
         line-height: 15px;
-
-    
     }
 
     .below-detail-row{
@@ -319,16 +300,3 @@
     }
 
 }
-
-
-/* @media only screen and (max-width: 575px) {
-
-    .card-inner{
-        width: 500px;
-    }
-
-    .detailrow{
-        width: 650px;
-    }
-
-} */

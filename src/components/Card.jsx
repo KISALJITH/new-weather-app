@@ -3,69 +3,24 @@ import { useNavigate } from "react-router-dom";
 import {getLocalTime, getSunsetDetails, getSunriseDetails} from './../services/calculations/timeCalculation'
 import "./../styles/card.css";
 import navigationImg from "./../images/navigation.png";
-import {} from './../services/calculations/timeCalculation'
 import cloud from "./../images/cloud.png";
-import GeoApi from "./../services/apiHelper/geoAPI";
-import WeatherApi from "../services/apiHelper/weatherApi";
+import { getCachedData } from "../services/casheData";
+import { fetchWeatherData } from "../services/apiHelper/fetchApi";
 
-// const Card = ({ city }) => {
 function Card(props){
-
+console.log(props)
   const [weatherData, setWeatherData] = useState(null);
 
-  const getCachedData = (key) => {
-    const cachedData = localStorage.getItem(key);
-
-    if (cachedData) {
-      const { data, cacheTime } = JSON.parse(cachedData);
-      const currentTime = new Date().getTime();
-      // Check if the cached data has not expired (5 minutes)
-      if (currentTime - cacheTime <= 5 * 60 * 1000) {
-        return data;
-      } else {
-        // Remove expired cached data
-        localStorage.removeItem(key);
-        fetchWeatherData(props.city);
-      }
-    }
-    return null;
-  };
-
   useEffect(() => {
-    const cachedData = getCachedData(props.city.CityCode);
-
+    
+    const cachedData = getCachedData(props.city);
+    console.log(cachedData)
     if (cachedData) {
       setWeatherData(cachedData);
     } else {
-      fetchWeatherData(props.city);
+      setWeatherData(fetchWeatherData(props.city));
     }
   }, []);
-
-  const fetchWeatherData = (city) => {
-    const geoObj = new GeoApi();
-    fetch(geoObj.getGeoUrl(city))
-      .then((response) => response.json())
-      .then((data) => {
-        const { lat, lon } = data[0];
-        const wheatherObj = new WeatherApi();
-
-        return fetch(wheatherObj.getWheatherUrl(lat, lon));
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        setWeatherData(data);
-        cacheData(props.city.CityCode, data);
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data:", error);
-      });
-  };
-
-  const cacheData = (key, data) => {
-    const cacheTime = new Date().getTime();
-    const cachedData = { data, cacheTime };
-    localStorage.setItem(key, JSON.stringify(cachedData));
-  };
 
   const navigate = useNavigate();
   const toggleView = () => {
@@ -82,6 +37,7 @@ function Card(props){
         &humidity=${weatherData.main.humidity}
         &visibility=${weatherData.visibility / 1000}
         &speed=${weatherData.wind.speed}
+        &deg=${weatherData.wind.deg}
         &time=${getLocalTime(weatherData.dt, weatherData.timezone)}
         &sunrise=${getSunriseDetails(weatherData.timezone, weatherData.sys.sunrise)}
         &sunset=${getSunsetDetails(weatherData.timezone, weatherData.sys.sunset)}
@@ -127,8 +83,7 @@ function Card(props){
                         <div className="card card-segment-cd">
                           <div className="card-body-cd">
                             <p className="card-text-temp-cd">
-                              {/* {" "} */}
-                              {weatherData.main.temp} °c
+                              {weatherData.main.temp}°c
                             </p>
                             <p className="card-text-minTemp-cd">
                               Temp min: {weatherData.main.temp_min}°c

@@ -22,12 +22,10 @@ function ExpandCard() {
             <img src={backArrow} />
           </button>
 
-          <div className="row">
-            <div className="col-md-6 offset-lg-3 title-raw">
+            <div className="title-raw justify-content-center">
               <h2 className="card-text-city">{searchParams.get('cityName')}, {searchParams.get('country')}</h2>
               <h1 className="card-text-timeDate">{searchParams.get('time')}</h1>
             </div>
-          </div>
 
           <div className="row offset-md-2">
             <div className="detailrow">
