@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .header-outer > img{
@@ -17,4 +18,17 @@
     color: #ffffff;
     font-weight: 600;
     font-family: "Open Sans"; 
+}
+
+@media only screen and (min-width: 2000px) {
+    .main-title{
+        font-size: 80px;
+        margin: 80px;
+        margin-left: 15px;
+    }
+
+    .header-outer > img{
+        height: 90px;
+        margin-top: 50px;
+    }
 }

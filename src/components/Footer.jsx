@@ -3,7 +3,7 @@ import "./../styles/footer.css"
 
 function Footer() {
   return (
-    <div className='main-footer footer fixed-bottom'>
+    <div className='main-footer footer'>
        <p>2021 Fidenz Technologies</p> 
     </div>
   )

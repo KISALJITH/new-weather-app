@@ -6,7 +6,6 @@ import Searchbar from "../components/Searchbar";
 import Cards from "../components/Cards";
 
 function Homepage() {
-
   return (
     <div className="background">
       <Header />

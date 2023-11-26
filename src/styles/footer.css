@@ -1,11 +1,15 @@
 .main-footer{
-    width: 100%;
-    height: 70px;
+    position: static;
+    width: 100vw;
+    height: 60px;
     background-color: #30333d;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    margin-top: 30px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    bottom: 0px;
 }
 
 .main-footer p{

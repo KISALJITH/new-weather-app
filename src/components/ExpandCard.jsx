@@ -27,7 +27,7 @@ function ExpandCard() {
               <h1 className="card-text-timeDate">{searchParams.get('time')}</h1>
             </div>
 
-          <div className="row offset-md-2">
+          <div className="row ">
             <div className="detailrow">
             <div className="col-3 status-row upper-inner-box">
               <img className="cloud-img" src={cloud} />
@@ -44,33 +44,33 @@ function ExpandCard() {
         </div>
 
         <div className="card-lower">
-          <div className="row below-detail-row col-md-3 offset-md-1">
-            <div className="col-md-4">
+          <div className="row below-detail-row col-md-3 ">
+            <div className="col-md-3 ex-footer-segment">
               <div className="card card-segment">
                 <div className="card-body">
-                  <p className="card-text-pressure">Pressure : <span className="input-details">{searchParams.get('pressure')}Pa</span></p>
-                  <p className="card-text-humidity">Humidity : <span className="input-details">{searchParams.get('humidity')}%</span></p>
-                  <p className="card-text-visibility">Visibility : <span className="input-details">{searchParams.get('visibility')}km</span></p>
+                  <p>Pressure : <span className="input-details">{searchParams.get('pressure')}Pa</span></p>
+                  <p>Humidity : <span className="input-details">{searchParams.get('humidity')}%</span></p>
+                  <p>Visibility : <span className="input-details">{searchParams.get('visibility')}km</span></p>
                 </div>
               </div>
             </div>
             <div className="col-md-1 bottom-vl"></div>
-            <div className="col-md-3 border-left border-right">
+            <div className="col-md-3 border-left border-right ex-footer-segment">
               <div className="card card-segment">
                 <div className="card-body">
-                  <div className="card-text-imgNavigation offset-md-5">
+                  <div className="card-text-imgNavigation">
                     <img  className="navigation-img" src={navigationImg} />
                   </div>
-                  <p className="card-text-wind">{searchParams.get('speed')}m/s {searchParams.get('deg')} Degree</p>
+                  <p>{searchParams.get('speed')}m/s {searchParams.get('deg')} Degree</p>
                 </div>
               </div>
             </div>
             <div className="col-md-1 bottom-vl"></div>
-            <div className="col-md-3">
+            <div className="col-md-3 ex-footer-segment ">
               <div className="card card-segment sunrise-detail-col">
                 <div className="card-body">
-                  <p className="card-text-sunrise">Sunrise : <span className="input-details">{searchParams.get('sunrise')}</span></p>
-                  <p className="card-text-sunset">Sunset : <span className="input-details">{searchParams.get('sunset')}</span></p>
+                  <p>Sunrise : <span className="input-details">{searchParams.get('sunrise')}</span></p>
+                  <p>Sunset : <span className="input-details">{searchParams.get('sunset')}</span></p>
                 </div>
               </div>
             </div>

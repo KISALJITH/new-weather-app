@@ -1,3 +1,9 @@
+* {
+    color: #ffffff;
+    font-family: "Open Sans";
+    justify-items: center;
+}
+
 .card-outer{
     display: flex;
     width: 70%;
@@ -8,7 +14,6 @@
     background-color: transparent; 
     border: transparent;
     min-width: 190px;
-
 }
 
 .card-header{
@@ -16,6 +21,10 @@
 }
 
 .btn-backward{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+    margin-left: 15px;
     background-color: transparent;
     border: none;
 
@@ -25,7 +34,21 @@
     background-color: #383b47;
     width: 100%;
     border-radius: 0 0 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+}
+
+.ex-footer-segment{
+    width: auto;
+}
+
+.ex-footer-segment p {
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-bottom: 0;
 }
 
 .upper-inner-box{
@@ -33,12 +56,10 @@
 }
 
 .detailrow{
-    position: relative;
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     height: auto;
-
 }
 
 .card-segment{
@@ -48,15 +69,21 @@
     align-items: center;
     border: none;
     width: auto;
-    margin-top: 10px;
 
 }
 
 .below-detail-row{
     width: 80%;
     margin-top: 10px;
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.card-body p{
+    display: flex;
+    justify-content: center;
+}
+
 
 .top-vl{
     border-left: 3px solid #cdc9c9;
@@ -151,40 +178,6 @@
 
 }
 
-.card-text-pressure, .card-text-humidity, .card-text-visibility{
-    font-size: 14px;
-    line-height: 29px;
-    color: #ffffff;
-    font-weight: 600;
-    font-family: "Open Sans";
-    margin-bottom: 0;
-
-}
-
-.card-text-sunrise, .card-text-sunset{
-    font-size: 14px;
-    line-height: 30px;
-    color: #ffffff;
-    font-weight: 600;
-    font-family: "Open Sans";
-    text-align: right;
-    margin-bottom: 0;
-}
-
-.card-text-wind{
-    font-size: 14px;
-    line-height: 34px;
-    color: #ffffff;
-    font-weight: 600;
-    font-family: "Open Sans";
-    text-align: center;
-    margin-bottom: 0;
-}
-
-.sunrise-detail-col{
-    margin-top: 25px;
-}
-
 .input-details{
     font-weight: 200;
 }
@@ -202,6 +195,19 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
+}
+
+@media only screen and (min-width: 2000px) {
+    .card-outer{
+        width: 1000px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-inner{
+        width: 1000px;
+        height: auto;
+    }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -229,6 +235,8 @@
     
     }
 }
+
+
 
 @media only screen and (max-width: 1000px) {
     .detailrow{
@@ -264,36 +272,9 @@
         line-height: 15px;
     }
 
-    .below-detail-row{
-        display: flex;
-        position: relative;
-        left: 50px;
-    }
 
-    .card-text-imgNavigation{
-        position: relative;
-        left: 50px;
-    }
 
-    .card-text-pressure, .card-text-humidity, .card-text-visibility{
-        font-size: 12px;
-        line-height: 20px;
-    
-    }
-    
-    .card-text-sunrise, .card-text-sunset{
-        font-size: 12px;
-        line-height: 20px;
-    }
-    
-    .card-text-wind{
-        font-size: 12px;
-        line-height: 20px;
-    }
-    
-    .sunrise-detail-col{
-        margin-top: 25px;
-    }
+ 
     
     .input-details{
         font-weight: 200;

@@ -10,7 +10,6 @@ function Weatherdetails() {
       <Header />
        <ExpandCard />
       <Footer />
-      
     </div>
       
   )

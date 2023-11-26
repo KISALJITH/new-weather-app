@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {getLocalTime, getSunsetDetails, getSunriseDetails} from './../services/calculations/timeCalculation'
+import {
+  getLocalTime,
+  getSunsetDetails,
+  getSunriseDetails,
+} from "./../services/functions/timeCalculation";
+import { RandomColor } from "./../services/functions/colorSelector";
 import "./../styles/card.css";
 import navigationImg from "./../images/navigation.png";
 import cloud from "./../images/cloud.png";
 import { getCachedData } from "../services/casheData";
 import { fetchWeatherData } from "../services/apiHelper/fetchApi";
 
-function Card(props){
-console.log(props)
+function Card(props) {
+  console.log(props);
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    
     const cachedData = getCachedData(props.city);
-    console.log(cachedData)
+    console.log(cachedData);
     if (cachedData) {
       setWeatherData(cachedData);
     } else {
@@ -39,8 +43,14 @@ console.log(props)
         &speed=${weatherData.wind.speed}
         &deg=${weatherData.wind.deg}
         &time=${getLocalTime(weatherData.dt, weatherData.timezone)}
-        &sunrise=${getSunriseDetails(weatherData.timezone, weatherData.sys.sunrise)}
-        &sunset=${getSunsetDetails(weatherData.timezone, weatherData.sys.sunset)}
+        &sunrise=${getSunriseDetails(
+          weatherData.timezone,
+          weatherData.sys.sunrise
+        )}
+        &sunset=${getSunsetDetails(
+          weatherData.timezone,
+          weatherData.sys.sunset
+        )}
        
         `,
     });
@@ -51,15 +61,20 @@ console.log(props)
         <div className="card-outer-cd" onClick={toggleView}>
           <div className="card card-inner-cd">
             <div className="card-rows col-md-6">
-              <div className="card text-bg-dark-cd card-upper-cd">
+              <div
+                className="card text-bg-dark-cd card-upper-cd"
+                style={{ backgroundColor: RandomColor() }}
+              >
                 <div className="card-img-overlay">
                   <div className="container">
+                    <div className="close-btn">
                     <button
                       type="button"
-                      className="btn-close right-align offset-lg-11"
+                      className="btn-close"
                       data-bs-dismiss="alert"
                       aria-label="Close"
                     ></button>
+                    </div>
                     <div className="row upper-row">
                       <div className="col-md-6">
                         <div className="card card-segment-cd">
@@ -68,7 +83,10 @@ console.log(props)
                               {weatherData.name}, {weatherData.sys.country}
                             </p>
                             <p className="card-text-timeDate-cd">
-                              {getLocalTime(weatherData.dt, weatherData.timezone)}
+                              {getLocalTime(
+                                weatherData.dt,
+                                weatherData.timezone
+                              )}
                             </p>
                             <div className="status-details">
                               <img className="cloud-img " src={cloud} />
@@ -98,25 +116,26 @@ console.log(props)
                   </div>
                 </div>
               </div>
+
               <div className="card-lower-cd">
                 <div className="container">
-                  <div className="row">
-                    <div className="col-md-4">
+                  <div className="row card-footer">
+                    <div className="col-md-4 border-end  footer-segment">
                       <div className="card card-segment-cd">
                         <div className="card-body">
-                          <p className="card-text-pressure-cd">
+                          <p>
                             Pressure:{" "}
                             <span className="input-details">
                               {weatherData.main.pressure}Pa
                             </span>
                           </p>
-                          <p className="card-text-humidity-cd">
+                          <p>
                             Humidity:{" "}
                             <span className="input-details">
                               {weatherData.main.humidity}%
                             </span>
                           </p>
-                          <p className="card-text-visibility-cd">
+                          <p>
                             Visibility:
                             <span className="input-details">
                               {weatherData.visibility / 1000}km
@@ -125,33 +144,37 @@ console.log(props)
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-4 border-left border-right">
+                    <div className="col-md-4 border-end footer-segment">
                       <div className="card card-segment-cd">
-                        <div className="card-body">
                           <img
-                            className="card-text-imgNavigation-cd offset-md-4"
+                            className="card-text-imgNavigation-cd "
                             src={navigationImg}
                           />
-                          <p className="card-text-wind-cd">
+                          <p>
                             {weatherData.wind.speed}m/s {weatherData.wind.deg}{" "}
                             Degree
                           </p>
-                        </div>
                       </div>
                     </div>
                     <div className="col-md-4">
                       <div className="card card-segment-cd">
                         <div className="card-body">
-                          <p className="card-text-sunrise-cd">
+                          <p>
                             Sunrise:
                             <span className="input-details">
-                              {getSunriseDetails(weatherData.timezone, weatherData.sys.sunrise)}
+                              {getSunriseDetails(
+                                weatherData.timezone,
+                                weatherData.sys.sunrise
+                              )}
                             </span>
                           </p>
-                          <p className="card-text-sunset-cd">
+                          <p>
                             Sunset:
                             <span className="input-details">
-                              {getSunsetDetails(weatherData.timezone, weatherData.sys.sunset)}
+                              {getSunsetDetails(
+                                weatherData.timezone,
+                                weatherData.sys.sunset
+                              )}
                             </span>
                           </p>
                         </div>
@@ -166,6 +189,6 @@ console.log(props)
       )}
     </div>
   );
-};
+}
 
 export default Card;
